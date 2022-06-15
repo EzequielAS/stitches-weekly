@@ -104,6 +104,7 @@ export function App() {
       </Button>
 
       <CustomButton 
+        buttonHidden
         title='teste'
       />
     </div>

@@ -1,17 +1,23 @@
-import { $$StyledComponentProps } from '@stitches/react/types/styled-component'
+import { $$StyledComponentProps } from '@stitches/react/types/styled-component';
 import { ButtonHTMLAttributes } from 'react'
 import { Container } from './styles'
 
-interface InterfaceCustomButton {
+interface InterfaceCustomButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   title: string;
+  buttonHidden?: boolean;
 }
 
-type CustomButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
-  typeof Container[$$StyledComponentProps] & InterfaceCustomButton
+type CustomButtonProps =  typeof Container[$$StyledComponentProps] 
+  & InterfaceCustomButton
 
-export function CustomButton({ title, ...rest }: CustomButtonProps) {
+export function CustomButton({ title, buttonHidden, ...rest }: CustomButtonProps) {
   return (
-    <Container {...rest}>
+    <Container 
+      css={{
+        display: `${buttonHidden && 'none'}`
+      }}
+      {...rest}
+    >
       {title}
     </Container>
   )

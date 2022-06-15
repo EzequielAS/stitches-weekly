@@ -19,6 +19,9 @@ export const Container = styled('button', {
         background: '$primary',
         color: '$onPrimary'
       },
+      hidden: {
+        display: 'none'
+      },
       danger: {
         background: '$red500',
         border: '1px solid $red500',
