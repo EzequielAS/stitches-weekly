@@ -1,8 +1,16 @@
-import { globalCss } from '@stitches/react'
-import { useEffect } from 'react'
-import { styled } from './theme'
+import { globalCss,  } from '@stitches/react'
+import { useEffect, useState } from 'react'
+import { CustomButton } from './components/CustomButton';
+import { styled, scaleUp, darkTheme } from './theme'
 
 const Button = styled('button', {
+  mx: '$3',
+  // '@bp1': {
+  //   background: '$purple500 !important'
+  // },
+  '&:hover': {
+    animation: `${scaleUp} 200ms`,
+  },
   variants: {
     size: {
       small: {
@@ -17,7 +25,8 @@ const Button = styled('button', {
 
     buttonType: {
       default: {
-        background: '$gray500',
+        background: '$primary',
+        color: '$onPrimary'
       },
       danger: {
         background: '$red500',
@@ -60,22 +69,43 @@ export function App() {
     globalStyles()
   }, [])
 
+  const [isDarkTheme, setIsDarkTheme] = useState(false)
+
+  const textButton = isDarkTheme ? 'Light' : 'Dark'
+
+  const handleChangeTheme = () => {
+    setIsDarkTheme(state => !state)
+  }
+
   return (
-    <div>
-      <Button>teste</Button>
+    <div 
+      className={isDarkTheme ? darkTheme : ''}
+    >
+      <Button onClick={handleChangeTheme}>
+        {textButton}
+      </Button>
 
       <Button 
         buttonType="danger" 
         size={{
           "@initial": 'small',
-          "@media (min-width: 500px)" : "big"
+          "@bp1" : "big"
         }}
         buttonStyle="outlined"
       >
           teste
       </Button>
 
-      <Button buttonType="success">teste</Button>
+      <Button 
+        buttonType="success"
+        as="a"
+      >
+        teste
+      </Button>
+
+      <CustomButton 
+        title='teste'
+      />
     </div>
   )
 }

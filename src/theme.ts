@@ -1,8 +1,10 @@
-import { createStitches } from '@stitches/react'
+import { createStitches, PropertyValue, keyframes, createTheme } from '@stitches/react'
 
 export const { styled } = createStitches({
     theme: {
       colors: {
+        primary: 'white',
+        onPrimary: 'black',
         gray500: 'hsl(206,10%,76%)',
         blue500: 'hsl(206,100%,50%)',
         purple500: 'hsl(252,78%,60%)',
@@ -35,4 +37,27 @@ export const { styled } = createStitches({
     //   zIndices: {},
     //   transitions: {},
     },
+    utils: {
+      mx: (value: PropertyValue<'margin'>) => ({ 
+        marginLeft: value, 
+        marginRight: value 
+      }),
+    },
+    media: {
+      bp1: '(min-width: 640px)',
+      bp2: '(min-width: 768px)',
+      bp3: '(min-width: 1024px)',
+    },
   });
+
+  export const scaleUp = keyframes({
+    '0%': { transform: 'scale(1)' },
+    '100%': { transform: 'scale(1.5)' },
+  });
+
+  export const darkTheme = createTheme({
+    colors: {
+      primary: 'black',
+      onPrimary: 'white'
+    },
+  })
