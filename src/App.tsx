@@ -1,6 +1,6 @@
-import { globalCss,  } from '@stitches/react'
+import { globalCss } from '@stitches/react'
 import { useEffect, useState } from 'react'
-import { CustomButton } from './components/CustomButton';
+import { CustomButton } from './components/CustomButton'
 import { styled, scaleUp, darkTheme } from './theme'
 
 const Button = styled('button', {
