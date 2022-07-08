@@ -1,12 +1,11 @@
 import { globalCss } from '@stitches/react'
 import { useEffect, useState } from 'react'
-import { CustomButton } from './components/CustomButton'
 import { styled, scaleUp, darkTheme } from './theme'
 
 const Button = styled('button', {
-  mx: '$3',
-  // '@bp1': {
-  //   background: '$purple500 !important'
+  mx: '$2',
+  // '@': {
+  //   background: '$purple500 !important',
   // },
   '&:hover': {
     animation: `${scaleUp} 200ms`,
@@ -78,19 +77,13 @@ export function App() {
   }
 
   return (
-    <div 
-      className={isDarkTheme ? darkTheme : ''}
-    >
+    <div className={isDarkTheme ? darkTheme : ''}>
       <Button onClick={handleChangeTheme}>
         {textButton}
       </Button>
 
       <Button 
         buttonType="danger" 
-        size={{
-          "@initial": 'small',
-          "@bp1" : "big"
-        }}
         buttonStyle="outlined"
       >
           teste
@@ -99,14 +92,12 @@ export function App() {
       <Button 
         buttonType="success"
         as="a"
+        css={{
+          padding: '100px'
+        }}
       >
         teste
       </Button>
-
-      <CustomButton 
-        buttonHidden
-        title='teste'
-      />
     </div>
   )
 }
